@@ -81,7 +81,9 @@
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .table-card {
@@ -99,7 +101,7 @@
 table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 600px;
+  min-width: 850px;
 }
 
 thead {
@@ -158,14 +160,53 @@ td {
   font-weight: 800;
 }
 
-.status-badge.active {
+.status-badge.active,
+.status-badge.approved {
   background: #e9f8ef;
   color: #16834a;
 }
 
-.status-badge.cancelled {
+.status-badge.cancelled,
+.status-badge.rejected {
   background: #fff0e9;
   color: #dc6541;
+}
+
+.status-badge.pending {
+  background: #fff7df;
+  color: #a87513;
+}
+
+.no-request {
+  color: #a09aac;
+  font-size: 12px;
+}
+
+.cancel-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 9px 12px;
+  background: #fff0ed;
+  color: #d45143;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.cancel-btn:hover {
+  background: #ffe0da;
+}
+
+.pending-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 9px 12px;
+  background: #fff7df;
+  color: #a87513;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: not-allowed;
 }
 
 .pagination {
@@ -193,6 +234,7 @@ td {
   border-radius: 8px;
   font-size: 12px;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .pagination button:disabled {
@@ -209,6 +251,142 @@ td {
   font-weight: 800;
 }
 
+/* Alerts */
+
+.alert {
+  padding: 13px 16px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.success-alert {
+  background: #e9f8ef;
+  color: #16834a;
+}
+
+.error-alert {
+  background: #fff0ed;
+  color: #c24141;
+}
+
+/* Cancellation Modal */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(25, 20, 40, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 480px;
+  background: #fff;
+  border-radius: 17px;
+  padding: 26px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.modal-header h2 {
+  color: #29213f;
+  font-size: 22px;
+  margin: 8px 0;
+}
+
+.close-btn {
+  border: none;
+  background: #f4f1f8;
+  color: #625b70;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.modal-description {
+  color: #898397;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 12px 0 20px;
+}
+
+.modal-card label {
+  display: block;
+  color: #443b55;
+  font-size: 13px;
+  font-weight: 750;
+  margin-bottom: 8px;
+}
+
+.modal-card textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid #e5e0ed;
+  border-radius: 9px;
+  outline: none;
+  resize: vertical;
+  font: inherit;
+  font-size: 13px;
+}
+
+.modal-card textarea:focus {
+  border-color: #8b5cf6;
+}
+
+.character-count {
+  text-align: right;
+  color: #9992a8;
+  font-size: 11px;
+  margin-top: 6px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.secondary-btn,
+.submit-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 11px 16px;
+  font-size: 12px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.secondary-btn {
+  background: #f2eff7;
+  color: #625b70;
+}
+
+.submit-btn {
+  background: #8b5cf6;
+  color: #fff;
+}
+
+.submit-btn:disabled,
+.secondary-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 @media (max-width: 700px) {
   .enrollment-page {
     padding: 16px;
@@ -217,5 +395,9 @@ td {
   .pagination {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .modal-card {
+    padding: 20px;
   }
 }
